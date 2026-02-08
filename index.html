@@ -11,7 +11,7 @@
 <body class="poppins-font">
     <section>
         <div>
-            <h3>$4000</h3>
+            <h3>$<span id="main-balance">400.00</span></h3>
             <p>available balance</p>
         </div>
         <hr>
@@ -22,8 +22,8 @@
         </div>
         <hr>
         <form action="">
-            <input id="add-money-input" type="text" placeholder="Enter Amount">
-            <input id="pin-number" type="text" placeholder="Enter Pin '123'">
+            <input id="add-money-input" type="text" placeholder="Enter Amount" autocomplete="off">
+            <input id="pin-number" type="text" placeholder="Enter Pin '123'" autocomplete="off">
             <button id="add-money-btn" class="btn" style="color: white; background-color: rgb(62, 130, 255) ;font-size: 1rem;">Add
                 Money</button>
         </form>
