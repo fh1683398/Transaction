@@ -16,8 +16,7 @@
     display: none;
 }
 .active{
-    background-color:  rgb(62, 130, 255);
-    color: white;
+    background-color:  rgb(193, 215, 255);
 }
 body{
     background-color: rgb(236, 236, 236);
