@@ -74,18 +74,23 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
 })
 
 
+//Active Routes ADD MONEY
+document.getElementById('add-money').addEventListener('click', function () {
+    const addMoneyFrom = showActiveRoute('add-money-form')
 
+    //active button
+    document.getElementById('add-money').classList.add(active)
+})
 
+//Active Routes CASH OUT
+document.getElementById('cash-out').addEventListener('click', function () {
+    const cashOutFrom = showActiveRoute('cash-out-form')
+})
 
-
-
-
-
-
-
-
-
-
+//Active Routes TRANSACTION
+document.getElementById('transaction').addEventListener('click', function () {
+    const transactionForm = showActiveRoute('transaction-form')
+})
 
 
 
@@ -102,3 +107,15 @@ function getTextFieldValue(id) {
     const getValue = document.getElementById(id).innerText
     return parseFloat(getValue)
 }
+
+
+//common function for showing active buttons
+function showActiveRoute(id) {
+
+
+    const addMoneyForm = document.getElementById('add-money-form').classList.add('hidden')
+    const cashOutForm = document.getElementById('cash-out-form').classList.add('hidden')
+    const transactionForm = document.getElementById('transaction-form').classList.add('hidden')
+
+    document.getElementById(id).classList.remove('hidden')
+} 
