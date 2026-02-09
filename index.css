@@ -12,6 +12,9 @@
 .poppins-font{
      font-family: "Poppins", sans-serif;
 }
+.hidden{
+    display: none;
+}
 body{
     background-color: rgb(236, 236, 236);
     font-family: "Poppins", sans-serif;

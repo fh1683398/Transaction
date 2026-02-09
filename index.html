@@ -21,11 +21,20 @@
             <button class="btn">Transaction</button>
         </div>
         <hr>
-        <form action="">
+
+        <!-- Add money form -->
+        <form id="add-moeny-form" class="hidden" action="">
             <input id="add-money-input" type="text" placeholder="Enter Amount" autocomplete="off">
             <input id="pin-number" type="text" placeholder="Enter Pin '123'" autocomplete="off">
             <button id="add-money-btn" class="btn" style="color: white; background-color: rgb(62, 130, 255) ;font-size: 1rem;">Add
                 Money</button>
+        </form>
+
+        <!-- Cash out form -->
+        <form id="cash-out-form" action="">
+            <input id="cash-out-input" type="text" placeholder="Enter Amount" autocomplete="off">
+            <input id="pin-number" type="text" placeholder="Enter Pin '123'" autocomplete="off">
+            <button id="cash-out-btn" class="btn" style="color: white; background-color: rgb(62, 130, 255) ;font-size: 1rem;">Cash Out</button>
         </form>
     </section>
 

@@ -2,38 +2,76 @@
 //Main balance
 let mainBalance = parseFloat(document.getElementById('main-balance').innerText)
 
+
+
+
+//ADD MONEY
+
 const addMoneyBtn = document.getElementById('add-money-btn')
 
 addMoneyBtn.addEventListener('click', function (e) {
     e.preventDefault()
 
     //get the input amount
-    const addingAmount = document.getElementById('add-money-input').value
+    let addMoneyInput = document.getElementById('add-money-input').value.trim()
 
     //get the pin
     const pinNumber = document.getElementById('pin-number').value
 
     //check if the amount is not a number
-    if (addingAmount === "" || isNaN(addingAmount)) {
+    if (addMoneyInput === "" || isNaN(addMoneyInput)) {
         alert("it's not a number")
         return
     }
 
-    //check if it has more the 2 numbers after the decimal
-    if (addingAmount.includes(".")) {
-        const decimals = addingAmount.split(".")[1]
-
-        if (decimals.length > 2) {
-            alert("only 2 decimal allowed")
-            return
-        }
+    //fix decimals
+    if (addMoneyInput.includes(".")) {
+        const parts = addMoneyInput.split(".");
+        addMoneyInput = parts[0] + "." + parts[1].slice(0, 2);
     }
 
     //convert the input to number
-    const addingAmountNum = parseFloat(addingAmount)
+    const addingAmountNum = parseFloat(addMoneyInput)
 
     //add to the main balance
     mainBalance += addingAmountNum;
 
     document.getElementById('main-balance').innerText = mainBalance
+})
+
+
+
+
+//CASH OUT
+
+document.getElementById('cash-out-btn').addEventListener('click', function (e) {
+    e.preventDefault()
+
+    //get the input
+    let cashOutInput = document.getElementById('cash-out-input').value.trim();
+
+    //get the pin
+    const pin = document.getElementById('pin-number').value;
+
+    //validate the input
+    if (cashOutInput === "" || isNaN(cashOutInput)) {
+        alert("it's not a number");
+        return;
+    }
+
+    //fix decimals
+    if (cashOutInput.includes(".")) {
+        const parts = cashOutInput.split(".")
+        cashOutInput = parts[0] + "." + parts[1].slice(0, 2)
+    }
+
+    //convert to number
+    const num = parseFloat(cashOutInput)
+    
+    //calculation
+    mainBalance -= num
+
+    //update the UI
+    document.getElementById('main-balance').innerText = mainBalance
+
 })
