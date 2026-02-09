@@ -29,8 +29,10 @@ document.getElementById('add-money-btn').addEventListener('click', function (eve
     }
     else {
         //decimal
-        let decimal = addMoney.split('.');
-        addMoney = decimal[0] + "." + decimal[1].slice(0, 2)
+        if (addMoney.includes(".")) {
+            let decimal = addMoney.split('.');
+            addMoney = decimal[0] + "." + decimal[1].slice(0, 2)
+        }
 
         //convert the input to number
         let addMoneyNum = parseFloat(addMoney)
@@ -39,11 +41,37 @@ document.getElementById('add-money-btn').addEventListener('click', function (eve
         mainBalance += addMoneyNum;
 
         //update the UI
-        document.getElementById('main-balance').innerText = mainBalance;
+        document.getElementById('main-balance').innerText = mainBalance.toFixed(2);
     }
 })
 
 
+//CASH OUT
+document.getElementById('cash-out-btn').addEventListener('click', function (e) {
+    e.preventDefault()
+
+    let cashOut = getInputValue('cash-out-input');
+
+    if (cashOut === "" || isNaN(cashOut) || cashOut <= 0 || mainBalance < cashOut) {
+        alert("invalid Input")
+        return
+    } else {
+        //decimal
+        if (cashOut.includes(".")) {
+            let decimal = cashOut.split(".")
+            cashOut = decimal[0] + "." + decimal[1].slice(0, 2)
+        }
+
+        //convert to number
+        let cashOutNum = parseFloat(cashOut)
+
+        //remaining
+        mainBalance -= cashOutNum
+
+        //update the UI
+        document.getElementById('main-balance').innerText = mainBalance.toFixed(2)
+    }
+})
 
 
 
