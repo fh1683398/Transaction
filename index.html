@@ -16,29 +16,41 @@
         </div>
         <hr>
         <div class="btn-container">
-            <button class="btn">Add Money</button>
-            <button class="btn">Cash Out</button>
-            <button class="btn">Transaction</button>
+            <button id="add-money" class="btn">Add Money</button>
+            <button id="cash-out" class="btn">Cash Out</button>
+            <button id="transaction" class="btn">Transaction</button>
         </div>
         <hr>
 
         <!-- Add money form -->
-        <form id="add-moeny-form" class="hidden" action="">
+        <form id="add-money-form" class="" action="">
             <input id="add-money-input" type="text" placeholder="Enter Amount" autocomplete="off">
-            <input id="pin-number" type="text" placeholder="Enter Pin '123'" autocomplete="off">
-            <button id="add-money-btn" class="btn" style="color: white; background-color: rgb(62, 130, 255) ;font-size: 1rem;">Add
-                Money</button>
+            <input id="" type="text" placeholder="Enter Pin '123'" autocomplete="off">
+            <button id="add-money-btn" 
+                class="btn" 
+                style="color: white; 
+                    background-color: rgb(62, 130, 255);
+                    font-size: 1rem;">
+                    Add Money
+            </button>
         </form>
 
         <!-- Cash out form -->
-        <form id="cash-out-form" action="">
+        <form id="cash-out-form" class="hidden" action="">
             <input id="cash-out-input" type="text" placeholder="Enter Amount" autocomplete="off">
-            <input id="pin-number" type="text" placeholder="Enter Pin '123'" autocomplete="off">
-            <button id="cash-out-btn" class="btn" style="color: white; background-color: rgb(62, 130, 255) ;font-size: 1rem;">Cash Out</button>
+            <input id="" type="text" placeholder="Enter Pin '123'" autocomplete="off">
+
+            <button id="cash-out-btn" 
+                class="btn" 
+                style="color: white; 
+                background-color: rgb(62, 130, 255);
+                font-size: 1rem;">Cash Out
+            </button>
         </form>
     </section>
 
-    <script src="./index.js"></script>
+    <!-- <script src="./index.js"></script> -->
+    <script src="./common.js"></script>
 </body>
 
 </html>

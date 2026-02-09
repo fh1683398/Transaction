@@ -16,7 +16,7 @@ addMoneyBtn.addEventListener('click', function (e) {
     let addMoneyInput = document.getElementById('add-money-input').value.trim()
 
     //get the pin
-    const pinNumber = document.getElementById('pin-number').value
+    // const pinNumber = document.getElementById('pin-number').value
 
     //check if the amount is not a number
     if (addMoneyInput === "" || isNaN(addMoneyInput)) {
@@ -30,6 +30,10 @@ addMoneyBtn.addEventListener('click', function (e) {
         addMoneyInput = parts[0] + "." + parts[1].slice(0, 2);
     }
 
+    if(addMoneyInput <= 0){
+        alert('put a positive number')
+        return
+    }
     //convert the input to number
     const addingAmountNum = parseFloat(addMoneyInput)
 
@@ -51,7 +55,7 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
     let cashOutInput = document.getElementById('cash-out-input').value.trim();
 
     //get the pin
-    const pin = document.getElementById('pin-number').value;
+    // const pin = document.getElementById('pin-number').value;
 
     //validate the input
     if (cashOutInput === "" || isNaN(cashOutInput)) {
@@ -63,6 +67,10 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
     if (cashOutInput.includes(".")) {
         const parts = cashOutInput.split(".")
         cashOutInput = parts[0] + "." + parts[1].slice(0, 2)
+    }
+    if(cashOutInput <= 0){
+        alert('put a positive number')
+        return
     }
 
     //convert to number
