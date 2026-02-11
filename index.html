@@ -8,52 +8,59 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 
-<body class="poppins-font">
-    <section>
-        <div>
-            <h3>$<span id="main-balance">400.00</span></h3>
-            <p>available balance</p>
-        </div>
-        <hr>
-        <div class="btn-container">
-            <button id="add-money" class="btn active">Add Money</button>
-            <button id="cash-out" class="btn">Cash Out</button>
-            <button id="transaction" class="btn">Transaction</button>
-        </div>
-        <hr>
+<body>
+    <main class="poppins-font">
+        <section>
+            <div>
+                <h3>$<span id="main-balance">400.00</span></h3>
+                <p>available balance</p>
+            </div>
+            <hr>
+            <div class="btn-container">
+                <button id="add-money" class="btn active">Add Money</button>
+                <button id="cash-out" class="btn">Cash Out</button>
+                <button id="transaction" class="btn">Transaction</button>
+            </div>
+            <hr>
 
-        <!-- Add money form -->
-        <form id="add-money-form" class="" action="">
-            <input id="add-money-input" type="text" placeholder="Enter Amount" autocomplete="off">
-            <input id="" type="text" placeholder="Enter Pin '123'" autocomplete="off">
-            <button id="add-money-btn" 
-                class="btn" 
-                style="color: white; 
+            <!-- Add money form -->
+            <form id="add-money-form" class="" action="">
+                <input id="add-money-input" type="text" placeholder="Enter Amount" autocomplete="off">
+                <input id="" type="text" placeholder="Enter Pin '123'" autocomplete="off">
+                <button id="add-money-btn" class="btn" style="color: white; 
                     background-color: rgb(62, 130, 255);
                     font-size: 1rem;">
                     Add Money
-            </button>
-        </form>
+                </button>
+            </form>
 
-        <!-- Cash out form -->
-        <form id="cash-out-form" class="hidden" action="">
-            <input id="cash-out-input" type="text" placeholder="Enter Amount" autocomplete="off">
-            <input id="" type="text" placeholder="Enter Pin '123'" autocomplete="off">
+            <!-- Cash out form -->
+            <form id="cash-out-form" class="hidden" action="">
+                <input id="cash-out-input" type="text" placeholder="Enter Amount" autocomplete="off">
+                <input id="" type="text" placeholder="Enter Pin '123'" autocomplete="off">
 
-            <button id="cash-out-btn" 
-                class="btn" 
-                style="color: white; 
+                <button id="cash-out-btn" class="btn" style="color: white; 
                 background-color: rgb(62, 130, 255);
                 font-size: 1rem;">Cash Out
-            </button>
-        </form>
+                </button>
+            </form>
 
-        <!-- Transaction section -->
-        <div id="transaction-form" class="hidden">
-            
+            <!-- Transaction section -->
+            <div id="transaction-form" class="hidden">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-box">
+            <h3 id="modal-message">Message</h3>
+            <button id="close-modal">close</button>
         </div>
-    </section>
-
+    </div>
     <!-- <script src="./index.js"></script> -->
     <script src="./common.js"></script>
 </body>

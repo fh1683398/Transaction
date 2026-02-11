@@ -12,13 +12,11 @@
 .poppins-font{
      font-family: "Poppins", sans-serif;
 }
-.hidden{
-    display: none;
-}
+
 .active{
     background-color:  rgb(193, 215, 255);
 }
-body{
+main{
     background-color: rgb(236, 236, 236);
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -82,5 +80,43 @@ input::placeholder{
 }
 
 .modal{
-    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    inset: 0;
+    z-index: 99;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.103);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.modal-box{
+    text-align: center;
+    padding: 50px 50px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    min-width: 260px;
+    max-width: 400px;
+}
+#modal-message{
+    font-size: 2rem;
+    color: var(--color-2);
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 16px;
+}
+#close-modal{
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+.hidden{
+    display: none;
 }

@@ -27,7 +27,7 @@ document.getElementById('add-money-btn').addEventListener('click', function (eve
     let addMoney = getInputValue('add-money-input')
 
     if (addMoney === "" || isNaN(addMoney) || addMoney <= 0) {
-        alert("invalid input")
+        showModal("invalid input")
         return;
     }
     else {
@@ -51,11 +51,14 @@ document.getElementById('add-money-btn').addEventListener('click', function (eve
         div.innerHTML = `
            <div style="padding:0.5rem 1rem; border:1px gray solid; border-radius: 10px; margin-bottom: 0.5rem;">
                 <p> 
-                    Add money: <span style="font-weight:700;">${addMoneyNum}tk</span>; Total balance: <span style="font-weight:700;">${mainBalance}tk</span>
+                    Add money: <span style="font-weight:700;">${addMoneyNum}tk</span>; Total balance: <span style="font-weight:700;">${mainBalance.toFixed(2)}tk</span>
                 </p>
            </div>`
 
-        transactionDiv.append(div)
+        transactionDiv.prepend(div)
+
+        //Show modal
+        showModal('successful')
     }
 
 })
@@ -68,11 +71,12 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
     let cashOut = getInputValue('cash-out-input');
 
     if (cashOut === "" || isNaN(cashOut) || cashOut <= 0) {
-        alert("invalid Input")
+        showModal("invalid Input")
         return
     }
     else if(mainBalance < cashOut){
-        alert('not enough balance')
+        showModal('not enough balance')
+        return
     }
     else {
         //decimal
@@ -96,11 +100,14 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
         div.innerHTML = `
                <div style="padding:0.5rem 1rem; border:1px gray solid; border-radius: 10px; margin-bottom: 0.5rem;">
                     <p> 
-                        Cash Out: <span style="font-weight:700;">${cashOutNum}tk</span>; Total balance: <span style="font-weight:700;">${mainBalance}tk</span>
+                        Cash Out: <span style="font-weight:700;">${cashOutNum}tk</span>; Total balance: <span style="font-weight:700;">${mainBalance.toFixed(2)}tk</span>
                     </p> 
                </div>`
 
-        transactionDiv.append(div)
+        transactionDiv.prepend(div);
+
+        //show Modal
+        showModal('successful')
     }
 
 })
@@ -108,24 +115,24 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
 
 //Active Routes
 document.getElementById('add-money').addEventListener('click', function () {
-    const addMoneyFrom = showActiveRoute('add-money-form')
+    showActiveRoute('add-money-form')
 
     //active button
-    const activeButton = showActiveButton('add-money')
+    showActiveButton('add-money')
 })
 
 
 document.getElementById('cash-out').addEventListener('click', function () {
-    const cashOutFrom = showActiveRoute('cash-out-form')
+    showActiveRoute('cash-out-form')
 
-    const activeButton = showActiveButton('cash-out')
+    showActiveButton('cash-out')
 })
 
 
 document.getElementById('transaction').addEventListener('click', function () {
-    const transactionForm = showActiveRoute('transaction-form')
+    showActiveRoute('transaction-form')
 
-    const activeButton = showActiveButton('transaction')
+    showActiveButton('transaction')
 })
 
 
@@ -149,9 +156,9 @@ function getTextFieldValue(id) {
 function showActiveRoute(id) {
 
 
-    const addMoneyForm = document.getElementById('add-money-form').classList.add('hidden')
-    const cashOutForm = document.getElementById('cash-out-form').classList.add('hidden')
-    const transactionForm = document.getElementById('transaction-form').classList.add('hidden')
+    document.getElementById('add-money-form').classList.add('hidden')
+    document.getElementById('cash-out-form').classList.add('hidden')
+    document.getElementById('transaction-form').classList.add('hidden')
 
     document.getElementById(id).classList.remove('hidden')
 }
@@ -165,3 +172,27 @@ function showActiveButton(id) {
 
     document.getElementById(id).classList.add('active')
 }
+
+
+const modal = document.getElementById('modal')
+let modalMessage = document.getElementById('modal-message')
+const closeModalBtn = document.getElementById('close-modal')
+
+//open modal
+function showModal(message){
+    modal.classList.remove('hidden');
+    modalMessage.innerText = message;
+}
+
+// close modal
+function closeModal(){
+    modal.classList.add('hidden')
+}
+
+modal.addEventListener('click', function(e){
+    if(e.target === modal){
+        closeModal()
+    }
+})
+
+closeModalBtn.addEventListener('click', closeModal)
