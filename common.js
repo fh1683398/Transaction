@@ -16,6 +16,9 @@
 
 // =========================================================
 let mainBalance = getTextFieldValue('main-balance')
+let transactionDiv = document.getElementById('transaction-form')
+
+
 
 //ADD MONEY
 document.getElementById('add-money-btn').addEventListener('click', function (event) {
@@ -42,7 +45,19 @@ document.getElementById('add-money-btn').addEventListener('click', function (eve
 
         //update the UI
         document.getElementById('main-balance').innerText = mainBalance.toFixed(2);
+
+        //add to transaction div
+        const div = document.createElement('div')
+        div.innerHTML = `
+           <div style="padding:0.5rem 1rem; border:1px gray solid; border-radius: 10px; margin-bottom: 0.5rem;">
+                <p> 
+                    Add money: <span style="font-weight:700;">${addMoneyNum}tk</span>; Total balance: <span style="font-weight:700;">${mainBalance}tk</span>
+                </p>
+           </div>`
+
+        transactionDiv.append(div)
     }
+
 })
 
 
@@ -52,10 +67,14 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
 
     let cashOut = getInputValue('cash-out-input');
 
-    if (cashOut === "" || isNaN(cashOut) || cashOut <= 0 || mainBalance < cashOut) {
+    if (cashOut === "" || isNaN(cashOut) || cashOut <= 0) {
         alert("invalid Input")
         return
-    } else {
+    }
+    else if(mainBalance < cashOut){
+        alert('not enough balance')
+    }
+    else {
         //decimal
         if (cashOut.includes(".")) {
             let decimal = cashOut.split(".")
@@ -70,7 +89,20 @@ document.getElementById('cash-out-btn').addEventListener('click', function (e) {
 
         //update the UI
         document.getElementById('main-balance').innerText = mainBalance.toFixed(2)
+
+
+        //add to transaction div
+        const div = document.createElement('div')
+        div.innerHTML = `
+               <div style="padding:0.5rem 1rem; border:1px gray solid; border-radius: 10px; margin-bottom: 0.5rem;">
+                    <p> 
+                        Cash Out: <span style="font-weight:700;">${cashOutNum}tk</span>; Total balance: <span style="font-weight:700;">${mainBalance}tk</span>
+                    </p> 
+               </div>`
+
+        transactionDiv.append(div)
     }
+
 })
 
 
@@ -122,11 +154,11 @@ function showActiveRoute(id) {
     const transactionForm = document.getElementById('transaction-form').classList.add('hidden')
 
     document.getElementById(id).classList.remove('hidden')
-} 
+}
 
 
 //common function for active buttons
-function showActiveButton(id){
+function showActiveButton(id) {
     document.getElementById('add-money').classList.remove('active')
     document.getElementById('cash-out').classList.remove('active')
     document.getElementById('transaction').classList.remove('active')
